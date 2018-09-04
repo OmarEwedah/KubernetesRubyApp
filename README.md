@@ -10,7 +10,7 @@
  4. [install minikube](https://github.com/kubernetes/minikube/releases)
  5. [install kubectl](https://kubernetes-cn.github.io/docs/tasks/tools/install-kubectl/) 
 
-**Clone the code from github**
+**Clone the project from github**
 
    
 
