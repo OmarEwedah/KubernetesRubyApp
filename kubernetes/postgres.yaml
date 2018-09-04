@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  labels: 
+   name: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: postgres
+  template:
+        metadata:
+          name: postgres
+          labels:
+            name: postgres
+        spec:
+          containers:
+            - image: postgres:9.4.5
+              name: postgres	      
+              envFrom:
+               - secretRef:
+                  name: mysecret
+              ports:
+                - containerPort: 5432
+                  name: postgres
+              volumeMounts:
+                   - name: drkiq-postgres
+                     mountPath: /var/lib/postgresql/data
+          volumes:
+            - name: drkiq-postgres
+              persistentVolumeClaim:
+                claimName: postgres-pvc

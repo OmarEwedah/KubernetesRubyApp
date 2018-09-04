@@ -1,0 +1,9 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: redis-service
+spec:
+  selector:
+    name: redis
+  ports:
+  - port: 6379

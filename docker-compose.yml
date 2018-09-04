@@ -1,0 +1,8 @@
+drkiq:
+  build: ./drkiq
+  ports:
+    - '8000:8000'
+
+sidekiq:
+  build: ./drkiq
+  command: bundle exec sidekiq -C config/sidekiq.yml

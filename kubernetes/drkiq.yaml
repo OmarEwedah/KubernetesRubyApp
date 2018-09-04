@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drkiq
+  labels:
+   name: drkiq
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: drkiq
+  template:
+     metadata:
+      name: drkiq
+      labels:
+       name: drkiq
+     spec:
+        containers:
+        - image: drkiq_ruby
+          name: drkiq
+          imagePullPolicy: IfNotPresent
+          envFrom:
+           - configMapRef:
+               name: config-env
+          ports:
+          - containerPort: 8000
+            name: drkiq

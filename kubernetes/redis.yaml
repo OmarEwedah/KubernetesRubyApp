@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  labels: 
+   name: redis
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: redis
+  template:
+        metadata:
+          name: redis
+          labels:
+            name: redis
+        spec:
+          containers:
+            - image: redis:3.0.5
+              name: redis
+
+              ports:
+              - containerPort: 6379
+                name: redis
+
+              volumeMounts:
+                   - name: drkiq-redis
+                     mountPath: /var/lib/redis/data
+          volumes:
+            - name: drkiq-redis
+              persistentVolumeClaim:
+                claimName: redis-pvc

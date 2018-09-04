@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dbreset
+spec:
+  template:
+    spec:
+      containers:
+      - name: dbreset
+        image: drkiq_ruby
+        imagePullPolicy: IfNotPresent
+        command: ["rake","db:reset"]
+        envFrom:
+         - configMapRef:
+            name: config-env
+
+      restartPolicy: Never
+
+

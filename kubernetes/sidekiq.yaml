@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sidekiq
+  labels: 
+   name: sidekiq
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: sidekiq
+  template:
+        metadata:
+          name: sidekiq
+          labels:
+            name: sidekiq
+        spec:
+          containers:
+            - image: drkiq_ruby
+              name: sidekiq
+              imagePullPolicy: IfNotPresent
+              command: ["bundle","exec","sidekiq","-C","config/sidekiq.yml"]
+
+              envFrom:
+                  - configMapRef:
+                     name: config-env
+
+

@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dbmigrate
+spec:
+  template:
+    spec:
+      containers:
+      - name: dbmigrate
+        image: drkiq_ruby
+        imagePullPolicy: IfNotPresent
+        command: ["rake","db:migrate"]
+        envFrom:
+         - configMapRef:
+            name: config-env
+
+      restartPolicy: Never
+

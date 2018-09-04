@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: drkiq
+spec:
+  type: NodePort
+  selector:
+    name: drkiq
+  ports:
+  - port: 8000
+    nodePort: 30051
