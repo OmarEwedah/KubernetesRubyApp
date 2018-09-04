@@ -23,7 +23,7 @@
 
 **Building our Image**
 
-    docker build -t drkiq_ruby ./KubernetesRubyApp/
+    docker build -t drkiq_ruby KubernetesRubyApp/
 **deploy Ruby application on kubernetes**
 
  1. `kubectl create -f KubernetesRubyApp/kubernetes/secret.yaml`
