@@ -1,6 +1,6 @@
 # KubernetesRubyApp
 
-# **Rails application running with Kubernetes Using Minikube**
+# **ruby on rails application running with Kubernetes Using Minikube**
 
 **Prerequisites**
 
